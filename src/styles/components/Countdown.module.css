@@ -38,6 +38,7 @@
 }
 
 .countdownButton {
+    position: relative;
     width: 100%;
     height: 5rem;
 
@@ -59,6 +60,37 @@
     transition: background-color 0.2s;
 }
 
-.countdownButton:hover{
+.countdownButton:not(:disabled):hover{
     background: var(--blue-dark);
+}
+
+.countdownButtonActive {
+    background: var(--white);
+    color: var(--title);
+}
+
+.countdownButtonActive:not(:disabled):hover {
+    background: var(--red);
+    color: var(--white);
+}
+
+.countdownButton:disabled {
+    background: var(--white);
+    color: var(--text);
+    cursor: not-allowed;
+}
+
+.countdownButton:disabled::after {
+  content: "";
+  position: absolute;
+  height: 0.44rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #4CD62B;
+  border-radius: 0 0 5px 5px;
+}
+
+.checkIcon {
+    margin-left: 0.5rem;
 }

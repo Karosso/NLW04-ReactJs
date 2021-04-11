@@ -1,20 +1,18 @@
-import { useCountdown } from '../contexts/CountdownContext';
-import styles from '../styles/components/Countdown.module.css';
-
+import { useCountdown } from "../contexts/CountdownContext";
+import styles from "../styles/components/Countdown.module.css";
 
 export function Countdown() {
-
   const {
     hasFinished,
     isActive,
     minutes,
     resetCountdown,
     seconds,
-    startCountdown
+    startCountdown,
   } = useCountdown();
 
-  const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('');
-  const [secondLeft, secondRight] = String(seconds).padStart(2, '0').split('');
+  const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("");
+  const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("");
 
   return (
     <div>
@@ -30,46 +28,36 @@ export function Countdown() {
         </div>
       </div>
 
-      {
-        hasFinished
-          ?
-          <button
-            disabled
-            className={styles.countdownButton}
-          >
-            Ciclo Encerrado
-            <img
-              src="icons/check_circle.png"
-              alt="Ciclo encerrado"
-              className={styles.checkIcon}
-            />
-          </button>
-          :
-          <>
-            {
-              isActive
-                ?
-                <button
-                  type="button"
-                  className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
-                  onClick={resetCountdown}
-                >
-                  Abandonar ciclo
-                </button>
-                :
-                <button
-                  type="button"
-                  className={`${styles.countdownButton} ${styles.countdownButtonInactive}`}
-                  onClick={startCountdown}
-                >
-                  Iniciar ciclo
-                </button>
-            }
-          </>
-      }
-
-
+      {hasFinished ? (
+        <button disabled className={styles.countdownButton}>
+          Ciclo Encerrado
+          <img
+            src="icons/check_circle.png"
+            alt="Ciclo encerrado"
+            className={styles.checkIcon}
+          />
+        </button>
+      ) : (
+        <>
+          {isActive ? (
+            <button
+              type="button"
+              className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
+              onClick={resetCountdown}
+            >
+              Abandonar ciclo
+            </button>
+          ) : (
+            <button
+              type="button"
+              className={`${styles.countdownButton} ${styles.countdownButtonInactive}`}
+              onClick={startCountdown}
+            >
+              Iniciar ciclo
+            </button>
+          )}
+        </>
+      )}
     </div>
-  )
+  );
 }
-

@@ -1,25 +1,25 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useChallenges } from './ChallengesContext';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { useChallenges } from "./ChallengesContext";
 
 let countdownTimeout: NodeJS.Timeout;
-
 
 interface ICountdownContextProps {
   minutes: number;
   seconds: number;
-  hasFinished: boolean
-  isActive: boolean
+  hasFinished: boolean;
+  isActive: boolean;
   startCountdown: () => void;
   resetCountdown: () => void;
 }
 
-export const CountdownContext = createContext<ICountdownContextProps>({} as ICountdownContextProps);
+export const CountdownContext = createContext<ICountdownContextProps>(
+  {} as ICountdownContextProps
+);
 
 export const CountdownProvider: React.FC = ({ children }) => {
+  const { startNewChallenge } = useChallenges();
 
-  const { startNewChallenge } = useChallenges()
-
-  const [time, setTime] = useState(25 * 60);
+  const [time, setTime] = useState(0.05 * 60);
   const [isActive, setIsActive] = useState(false);
   const [hasFinished, setHasFinished] = useState(false);
 
@@ -28,14 +28,14 @@ export const CountdownProvider: React.FC = ({ children }) => {
 
   const startCountdown = () => {
     setIsActive(true);
-  }
+  };
 
   const resetCountdown = () => {
     clearTimeout(countdownTimeout);
     setIsActive(false);
     setHasFinished(false);
-    setTime(25 * 60)
-  }
+    setTime(0.05 * 60);
+  };
 
   useEffect(() => {
     if (isActive && time > 0) {
@@ -47,27 +47,23 @@ export const CountdownProvider: React.FC = ({ children }) => {
       setIsActive(false);
       startNewChallenge();
     }
-  }, [isActive, time])
-
-
+  }, [isActive, time]);
 
   return (
     <CountdownContext.Provider
-      value={
-        {
-          minutes,
-          seconds,
-          hasFinished,
-          isActive,
-          startCountdown,
-          resetCountdown
-        }
-      }
+      value={{
+        minutes,
+        seconds,
+        hasFinished,
+        isActive,
+        startCountdown,
+        resetCountdown,
+      }}
     >
       {children}
     </CountdownContext.Provider>
-  )
-}
+  );
+};
 
 export const useCountdown = () => {
   const context = useContext(CountdownContext);

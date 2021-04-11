@@ -1,19 +1,151 @@
+.containerNotLogged {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+
+  background: var(--blue);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-left: 20%;
+}
+
+.backgroundLogo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100px;
+  margin: auto;
+}
+
+.notLoggedContent {
+  height: 50%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.notLoggedContent p{
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.notLoggedContent p img{
+  width: 35px;
+}
+
+.notLoggedContent div {
+  height: 60%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.notLoggedContent div > div {
+  background: linear-gradient(90deg, #4953b8 0%, rgba(73, 83, 184, 0.2) 100%);
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.notLoggedContent div > div > input {
+  background: none;
+  flex: 1;
+  border: none;
+  border-radius: 5px 0px 0px 5px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  padding-left: 3rem;
+
+  color: var(--text-highlight);
+}
+
+.notLoggedContent div > div > input::placeholder {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+
+  color: var(--text-highlight);
+}
+
+.notLoggedContent div > div > button {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  background: #4953b8;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.notLoggedContent h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.githubButton {
+  width: 400px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1rem;
+
+  background: linear-gradient(90deg, #4953b8 0%, rgba(73, 83, 184, 0.2) 100%);
+  border: none;
+  border-radius: 5px 0px 0px 5px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+
+  color: var(--text-highlight);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.notLoggedContent button:hover {
+  opacity: 0.6;
+}
+
+.notLoggedContent button div {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #4953b8;
+  border-radius: 0px 5px 5px 0px;
+}
+
 .container {
-    height: 100vh;
-    max-width: 992px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem;
-  
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .container section {
-    flex: 1;
-  
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6.25rem;
-    align-content: center;
-  }
-  
+  height: 100vh;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container section {
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6.25rem;
+  align-content: center;
+}
